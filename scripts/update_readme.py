@@ -36,14 +36,13 @@ def get_stats():
     return total_solved, top_category, top_count
 
 
-def update_readme(total, top_cat, top_cat_count):
+def update_readme(total):
     with open(README_PATH, 'r', encoding='utf-8') as f:
         content = f.read()
 
     stats_text = (
         "\n"
         f"![Solved](https://img.shields.io/badge/Solved-{total}-blue?style=for-the-badge&logo=leetcode)\n"
-        f"![Focus](https://img.shields.io/badge/Main_Focus-{top_cat}_({top_cat_count})-orange?style=for-the-badge)\n"
     )
 
     new_content = re.sub(
