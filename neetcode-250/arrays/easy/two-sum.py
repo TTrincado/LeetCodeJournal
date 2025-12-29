@@ -1,10 +1,12 @@
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
-        # num1 + num2 = target
-        # num2 = target - num1
-        # To extract num2 we need to calculate it for each index and save all num1 seen.
+        ''' 
+        num1 + num2 = target
+        num2 = target - num1 -> complement
+        To extract num2 we need to calculate it for each index and save all num1 seen.
 
-        # Strategy: One-pass hash table that stores {value: index} of numbers we have seen so far.
+        Strategy: One-pass hash table that stores {value: index} of numbers we have seen so far.
+        '''
 
         seen = {}
         for i, num in enumerate(nums):
