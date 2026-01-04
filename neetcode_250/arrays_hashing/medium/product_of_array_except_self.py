@@ -1,17 +1,33 @@
 class Solution:
-    """
-    Solved using the Prefix & Suffix Product technique, the hint helped me.
-
-    The core idea is that for any index 'i', the product of all elements except self 
-    is equivalent to:
-    (Product of all nums to the LEFT of i) * (Product of all nums to the RIGHT of i).
-
-    Complexity:
-    - Time: O(N) (We iterate through the list 3 times)
-    - Space: O(N) (We use two extra arrays of size N)
-    """
+    def productExceptSelfBruteForce(self, nums: list[int]) -> list[int]:
+        """
+        First approach, brute force to practice double iteration in an array.
+        """
+        original = nums.copy()
+        for i, num in enumerate(nums):
+            helper = original.copy()
+            
+            multiplied = 1
+            helper = helper[:i] + helper [i + 1:] 
+            for k in helper:
+                multiplied *= k
+            
+            nums[i] = multiplied
+        
+        return nums
 
     def productExceptSelf(self, nums: list[int]) -> list[int]:
+        """
+        Solved using the Prefix & Suffix Product technique, the hint helped me.
+
+        The core idea is that for any index 'i', the product of all elements except self 
+        is equivalent to:
+        (Product of all nums to the LEFT of i) * (Product of all nums to the RIGHT of i).
+
+        Complexity:
+        - Time: O(N) (We iterate through the list 3 times)
+        - Space: O(N) (We use two extra arrays of size N)
+        """
         length = len(nums)
         prefix = [1] * length
         suffix = [1] * length
