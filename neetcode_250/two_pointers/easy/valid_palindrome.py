@@ -2,7 +2,12 @@ import re
 
 class Solution:
     """
-    Pretty straight forward regex approach
+    Pretty straight forward regex approach. We strip the string from all non alfanumeric letters
+    and compare the string with its reverse.
+
+
+    Time complexity: O(n) - We compare the strings with it's reversed version, which takes O(n).
+    Space complexity: O(n) - storing the clean string is dependant of the size of the input.
     """
     def isPalindrome(self, s: str) -> bool:
         clean_s = re.sub(r'[^a-zA-Z0-9]', '', s).lower()
