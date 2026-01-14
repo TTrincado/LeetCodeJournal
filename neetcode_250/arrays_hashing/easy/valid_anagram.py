@@ -6,7 +6,7 @@ class Solution:
     Uses a shared hashmap that counts the frequency of the letters in the word.
 
     Time complexity: O(n) - We iterate through both strings once.
-    Space complexity:: O(1) - The map size stays within 26 characters (a-z).
+    Space complexity: O(1) - The map size stays within 26 characters (a-z).
     """
     def isAnagram(self, s: str, t: str) -> bool:
         # If lengths differ, they cannot be anagrams.
