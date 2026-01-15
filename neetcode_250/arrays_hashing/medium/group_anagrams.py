@@ -1,35 +1,38 @@
-from collections import defaultdict
-
-
-class Solution:
+class Solution2:
     """
     Strategy: Sort the words and create a hash map -> { sorted_word: [word1, word2, ...]}
+
+    Time complexity: O(n * klog(k))
+    Space complexity: O(n)
     """
 
     def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
-        """
-        First approach
-        """
-        hashmap = defaultdict(list)
-        ans = []
+        from collections import defaultdict
 
-        # Strategy: sort and save the sorted word
+        hashmap = defaultdict(list)
+        res = []
+
         for word in strs:
             sorted_word = ''.join(sorted(word))
             hashmap[sorted_word].append(word)
 
         for value in hashmap.values():
-            ans.append(value)
+            res.append(value)
 
-        return ans
+        return res
 
-        # O(n · k log k), since we sort each word. It can be optimized via counting the frequency of each letter.
-        # Also, ans was redundant -> return list(hashmap.values())
 
-    def groupAnagramsV2(self, strs: list[str]) -> list[list[str]]:
-        """
-        Optimized solution. Counts the frequency of letters and stores it in a hashmap.
-        """
+class Solution2:
+    """
+    Counts the frequency of letters and stores it in a hashmap.
+
+    Time complexity: O(k * n)
+    Space complexity: O(k * n)
+    """
+
+    def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
+        from collections import defaultdict
+
         res = defaultdict(list)
         for s in strs:
             count = [0] * 26
