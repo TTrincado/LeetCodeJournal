@@ -5,7 +5,7 @@ class Solution:
     2. Iterate columns to check for duplicates.
     3. Iterate 3x3 sub-boxes using nested loops.
     """
-    def isValidSudoku(self, board: List[List[str]]) -> bool:
+    def isValidSudoku(self, board: list[list[str]]) -> bool:
         # 1. Validate Rows
         for i in range(9):
             seen = set()
@@ -57,7 +57,8 @@ class Solution:
     
     Key trick: Using a tuple (r // 3, c // 3) as a dictionary key to identify the 3x3 box.
     """
-    def isValidSudoku(self, board: List[List[str]]) -> bool:
+    def isValidSudoku(self, board: list[list[str]]) -> bool:
+        from collections import defaultdict
         cols = defaultdict(set)
         rows = defaultdict(set)
         squares = defaultdict(set) # Key will be (row // 3, col // 3)
