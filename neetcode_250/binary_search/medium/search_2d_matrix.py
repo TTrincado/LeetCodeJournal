@@ -18,8 +18,8 @@ class Solution:
         while l <= r:
             mid = l + (r - l) // 2
             
-            row = mid // COLS
-            col = mid % COLS
+            row = mid // COLS # Finds the row
+            col = mid % COLS # Finds the columns
             
             mid_val = matrix[row][col]
 
