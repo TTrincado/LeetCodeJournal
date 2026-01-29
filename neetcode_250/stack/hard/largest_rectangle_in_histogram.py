@@ -29,7 +29,7 @@ class Solution:
         
         left_limit[0] = -1 # Virtual boundary
         for i in range(1, n):
-            p = i - 1
+            p = i - 1 # Index of the value compared to, starts at the one before heights[i]
             
             # DP Logic: Jump over bars that are taller or equal
             while p >= 0 and heights[p] >= heights[i]:
@@ -49,7 +49,10 @@ class Solution:
             
         max_area = 0
         for i in range(n):
-            width = right_limit[i] - left_limit[i] - 1
+            # left_limit and right_limit are the indices of the "walls" stopping the bar.
+            # We calculate the distance between these walls, excluding the walls themselves
+            # hence the -1
+            width = right_limit[i] - left_limit[i] - 1 
             area = heights[i] * width
             if area > max_area:
                 max_area = area
