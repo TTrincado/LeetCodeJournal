@@ -33,3 +33,45 @@ class Solution:
                 l = r - len(s1)
 
         return False
+
+
+class Solution2:
+    """
+    More efficient approach, instead of resetting the count2 frequency map, we
+    add what is coming in and substract what is coming out of the window, taking O(1) in 
+    this step.
+
+    Time Complexity: O(N * 26) -> O(N) (Dictionary comparison takes at most O(26)).
+    Space Complexity: O(1) (Max 26 keys).
+    """
+
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        from collections import defaultdict
+
+        if len(s1) > len(s2):
+            return False  # Common pitfall, there can't
+        # be substrings in s1 if s1 is bigger, not necessary tho
+
+        count1 = defaultdict(int)
+        count2 = defaultdict(int)
+
+        for s in s1:
+            count1[s] += 1
+
+        l = 0
+        for r in range(len(s2)):
+            count2[s2[r]] += 1
+
+            # If window is larger than s1, remove outgoing char (Left)
+            # We use an 'if' because the window grows 1 by 1, so it exceeds only by 1.
+            if (r - l + 1) > len(s1):
+                count2[s2[l]] -= 1
+                if count2[s2[l]] == 0:
+                    # Clean up zero-counts for valid comparison,
+                    del count2[s2[l]]
+                l += 1
+
+            if count1 == count2:
+                return True
+
+        return False
