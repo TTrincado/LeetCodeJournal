@@ -67,7 +67,9 @@ class Solution2:
             if (r - l + 1) > len(s1):
                 count2[s2[l]] -= 1
                 if count2[s2[l]] == 0:
-                    # Clean up zero-counts for valid comparison,
+                    # Clean up zero-counts for valid comparison, if we skipped
+                    # this step they wouldnt be the same because a dict. that contains
+                    # a key with value 0 != that doesn't have the value
                     del count2[s2[l]]
                 l += 1
 
